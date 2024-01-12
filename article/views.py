@@ -14,6 +14,9 @@ class ArticleList(generics.ListCreateAPIView):
     # 权限
     permission_classes = [IsAdminUserOrReadOnly]
 
+    def perform_create(self, serializer):
+        serializer.save(author=self.request.user)
+
 
 class ArticleDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Article.objects.all()
