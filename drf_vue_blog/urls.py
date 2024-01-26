@@ -23,13 +23,11 @@ from article import views
 
 router = DefaultRouter()
 router.register(r'article', views.ArticleViewSet)
+router.register(r'category', views.CategoryViewSet)
 
 urlpatterns = [
     # drf 自动注册路由
     path('api/', include(router.urls)),
-
-
-
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
     path('api/article/', include('article.urls', namespace='article')),
